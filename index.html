@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrintClick (פרינט קליק) – עמדת הדפסה ותוכנת קיוסק לבית המדרש</title>
+<meta name="description" content="PrintClick (פרינט קליק) – תוכנת עמדת הדפסה יציבה לבתי מדרש ובתי כנסת: כניסה עם נדרים פלוס, חיוב מדויק לפי כל עמוד מודפס, סל הדפסות, חסימה מלאה של המחשב, מצב שבת ועדכונים אוטומטיים.">
+<meta name="keywords" content="פרינט קליק, PrintClick, עמדת הדפסה, עמדת הדפסה לבית מדרש, תוכנת קיוסק, הדפסה בתשלום, בית כנסת, נדרים פלוס, אוצר החכמה, הדפסת עלונים, סייפר">
+<link rel="canonical" href="https://hakoen1.github.io/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="PrintClick (פרינט קליק) – עמדת הדפסה חכמה לבית המדרש">
+<meta property="og:description" content="כניסה עם נדרים פלוס, חיוב מדויק לפי עמודים, סל הדפסות, חסימה מלאה, מצב שבת ועדכונים אוטומטיים.">
+<meta property="og:image" content="https://hakoen1.github.io/assets/screen-session.jpg">
+<meta property="og:url" content="https://hakoen1.github.io/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PrintClick",
+  "alternateName": "פרינט קליק",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "inLanguage": "he",
+  "description": "תוכנת עמדת הדפסה (קיוסק) לבתי מדרש ובתי כנסת: כניסה עם נדרים פלוס, חיוב לפי עמודים, סל הדפסות, חסימת המחשב, מצב שבת ועדכונים אוטומטיים.",
+  "url": "https://hakoen1.github.io/",
+  "image": "https://hakoen1.github.io/assets/screen-session.jpg",
+  "email": "s31001521@gmail.com"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "מה צריך כדי להתקין את PrintClick?",
+     "acceptedAnswer": {"@type": "Answer", "text": "מחשב עם Windows 10 או Windows 11, מדפסת וחיבור לאינטרנט. ההתקנה מגדירה את העמדה בעזרת אשף פשוט."}},
+    {"@type": "Question", "name": "האם המתפללים יכולים לשלם דרך נדרים פלוס?",
+     "acceptedAnswer": {"@type": "Answer", "text": "כן. נכנסים לעמדה עם תעודת זהות וסיסמת האזור האישי בנדרים פלוס, והחיוב יורד מהיתרה. אפשר גם להטעין יתרה ישירות מהעמדה."}},
+    {"@type": "Question", "name": "מה קורה בשבת ובחג?",
+     "acceptedAnswer": {"@type": "Answer", "text": "העמדה נסגרת אוטומטית לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת."}},
+    {"@type": "Question", "name": "האם אפשר לעבור מסייפר?",
+     "acceptedAnswer": {"@type": "Answer", "text": "כן. אפשר לייבא את המשתמשים המקומיים מסייפר, כך שהמתפללים ממשיכים עם החשבונות שלהם."}}
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --navy: #1f2a44;
+    --navy-2: #2b3550;
+    --gold: #c8951f;
+    --gold-soft: #f5e7c4;
+    --teal: #3fae9c;
+    --bg: #faf8f3;
+    --card: #ffffff;
+    --text: #1c2433;
+    --muted: #5a6680;
+    --line: #e7e2d6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Heebo', 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+  img, video { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== header ===== */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(250,248,243,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { height: 38px; width: auto; }
+  .brand b { font-size: 22px; font-weight: 800; direction: ltr; color: var(--navy); }
+  .brand b span { color: var(--gold); }
+  nav { display: flex; gap: 22px; align-items: center; }
+  nav a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
+  nav a:hover { color: var(--navy); }
+  .btn { display: inline-block; text-decoration: none; font-weight: 700; border-radius: 10px; padding: 12px 22px; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 6px 18px rgba(200,149,31,.28); }
+  .btn-outline { border: 1.5px solid var(--navy); color: var(--navy); }
+  nav .btn { padding: 8px 16px; font-size: 14px; color: #fff; }
+
+  /* ===== hero ===== */
+  .hero { padding: 64px 0 40px; background: radial-gradient(1000px 420px at 85% 0%, #fff4d9 0%, rgba(250,248,243,0) 70%); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 48px; align-items: center; }
+  .eyebrow { display: inline-block; background: var(--gold-soft); color: #8a6512; font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
+  h1 { font-size: 44px; line-height: 1.2; font-weight: 800; color: var(--navy); margin-bottom: 18px; }
+  h1 .en { direction: ltr; unicode-bidi: isolate; }
+  h1 .en span { color: var(--gold); }
+  .lead { font-size: 19px; color: var(--muted); margin-bottom: 28px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-shot { border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(31,42,68,.22); border: 1px solid var(--line); }
+
+  /* ===== sections ===== */
+  section { padding: 72px 0; }
+  .sec-title { text-align: center; margin-bottom: 44px; }
+  .sec-title h2 { font-size: 32px; font-weight: 800; color: var(--navy); }
+  .sec-title p { color: var(--muted); font-size: 17px; margin-top: 8px; }
+  .gold-line { width: 56px; height: 3px; background: var(--gold); border-radius: 2px; margin: 12px auto 0; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .feature { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .feature .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--navy); display: grid; place-items: center; margin-bottom: 14px; }
+  .feature .ic svg { width: 22px; height: 22px; stroke: #e9c46a; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature h3 { font-size: 19px; color: var(--navy); margin-bottom: 6px; }
+  .feature p { color: var(--muted); font-size: 15.5px; }
+
+  .video-sec { background: var(--navy); color: #fff; }
+  .video-sec .sec-title h2 { color: #fff; }
+  .video-sec .sec-title p { color: #c9d0dd; }
+  .video-box { max-width: 960px; margin: 0 auto; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.35); border: 1px solid #3a4560; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px; position: relative; }
+  .step::before { counter-increment: step; content: counter(step); position: absolute; top: -16px; right: 22px; width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .step h3 { color: var(--navy); font-size: 19px; margin: 8px 0 6px; }
+  .step p { color: var(--muted); }
+
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+  figure { background: #1c212b; border-radius: 14px; overflow: hidden; border: 1px solid #2f3747; }
+  figure img { width: 100%; }
+  figcaption { background: var(--card); color: var(--text); padding: 12px 16px; font-size: 15px; border-top: 1px solid var(--line); }
+  figcaption b { color: var(--navy); display: block; }
+  .wide { margin-top: 22px; }
+
+  .split { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+  .split figure { max-width: 380px; justify-self: center; }
+  .split h2 { font-size: 30px; color: var(--navy); margin-bottom: 12px; }
+  .split ul { list-style: none; }
+  .split li { padding: 8px 30px 8px 0; position: relative; color: var(--muted); }
+  .split li::before { content: ""; position: absolute; right: 0; top: 14px; width: 18px; height: 18px; border-radius: 50%; background: var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.4 2.3L9.5 3.6' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat; }
+  .split li b { color: var(--text); }
+
+  .pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pain { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .pain .q { background: var(--navy); color: #fff; padding: 22px 24px; font-size: 21px; font-weight: 800; line-height: 1.35; }
+  .pain .q::before { content: "?"; display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #c0392b; color: #fff; font-size: 17px; margin-left: 10px; vertical-align: middle; }
+  .pain .a { padding: 20px 24px 24px; color: var(--muted); }
+  .pain .a b { display: block; color: var(--teal); font-size: 15px; margin-bottom: 6px; }
+
+  .admin-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; margin-top: 36px; }
+  .admin-gallery figure { background: #fff; border-color: var(--line); }
+  .admin-gallery figure img { padding: 6px; }
+  .admin-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; max-width: 980px; margin: 0 auto; list-style: none; }
+  .btn-row-center { text-align: center; margin-top: 30px; }
+
+  .faq { max-width: 820px; margin: 0 auto; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 700; color: var(--navy); font-size: 17px; }
+  details p { color: var(--muted); margin-top: 10px; }
+
+  .contact { background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; text-align: center; border-radius: 20px; padding: 56px 24px; }
+  .contact h2 { font-size: 32px; margin-bottom: 10px; }
+  .contact p { color: #c9d0dd; font-size: 18px; margin-bottom: 26px; }
+  .contact .mail { display: block; margin-top: 18px; color: #e9c46a; font-weight: 700; direction: ltr; text-decoration: none; }
+
+  footer { padding: 28px 0 40px; text-align: center; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .split { grid-template-columns: 1fr; }
+    .features, .steps, .gallery, .pains, .admin-gallery { grid-template-columns: 1fr 1fr; }
+    .admin-list { grid-template-columns: 1fr; }
+    h1 { font-size: 34px; }
+    nav a:not(.btn) { display: none; }
+  }
+  @media (max-width: 600px) {
+    .features, .steps, .gallery, .pains, .admin-gallery { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+    .hero { padding-top: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="PrintClick">
+      <img src="assets/logo.png" alt="הלוגו של PrintClick">
+      <b>Print<span>Click</span></b>
+    </a>
+    <nav>
+      <a href="#features">יכולות</a>
+      <a href="#admins">למנהל</a>
+      <a href="#demo">סרטון</a>
+      <a href="#screens">צילומי מסך</a>
+      <a href="#faq">שאלות</a>
+      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">לפרטים</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">פרינט קליק · עמדת הדפסה לבית המדרש</span>
+      <h1><span class="en">Print<span>Click</span></span> – עמדת הדפסה חכמה לבית המדרש</h1>
+      <p class="lead">המתפללים נכנסים עם נדרים פלוס או עם משתמש של בית הכנסת, מדפיסים מאוצר החכמה, מוורד או מתוכנות העלונים – והחיוב מתבצע לבד, מדויק לפי כל עמוד שהודפס בפועל. המחשב נשאר נעול, ולמנהל יש שקט.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">אני רוצה פרטים</a>
+        <a class="btn btn-outline" href="#demo">לצפייה בסרטון</a>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <img src="assets/screen-session.jpg" width="1600" height="866" alt="עמדת PrintClick בזמן שימוש: בחירת עלון להדפסה, ובתחתית שורת המשימות עם היתרה, סל ההדפסות והטענת יתרה">
+    </div>
+  </div>
+</section>
+
+<section id="why" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>מכירים את זה?</h2>
+      <p>בגלל זה בנינו את PrintClick</p>
+      <div class="gold-line"></div>
+    </div>
+    <div class="pains">
+      <div class="pain">
+        <div class="q">נמאס לך שהעמדה קורסת כל יומיים?</div>
+        <div class="a"><b>ב-PrintClick:</b>העמדה בנויה ליציבות. אם משהו בכל זאת נתקע, היא עולה מחדש לבד תוך שניות, ויומן התקלה נשלח אוטומטית לטיפול – בלי שתצטרך להתקשר.</div>
+      </div>
+      <div class="pain">
+        <div class="q">העמדה שלך לא מחייבת על כל ההדפסות?</div>
+        <div class="a"><b>ב-PrintClick:</b>החיוב מדויק לפי כל עמוד שהודפס בפועל. כל הדפסה עוברת דרך העמדה, והמדפסת נעולה לכל הדפסה אחרת – כך שאי אפשר לעקוף את התשלום, גם לא מתוך אוצר החכמה או וורד.</div>
+      </div>
+      <div class="pain">
+        <div class="q">נמאס לך לבקש עדכון לתוכנה?</div>
+        <div class="a"><b>ב-PrintClick:</b>העמדה מתעדכנת לבד בלילה. תיקונים ויכולות חדשות מגיעים כל הזמן, בלי לבקש ובלי שמישהו יגיע לבית הכנסת.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>מה PrintClick עושה</h2>
+      <p>כל מה שעמדת הדפסה ציבורית צריכה – במקום אחד</p>
+      <div class="gold-line"></div>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h3>כניסה עם נדרים פלוס</h3>
+        <p>נכנסים עם תעודת זהות וסיסמת האזור האישי, והחיוב יורד מהיתרה בנדרים פלוס. אפשר להטעין יתרה ישירות מהעמדה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2 2.6 5 3.2 5 1.4 5 3.3-2.2 3.2-5 3.2-5-1.2-5-3.2"/></svg></div>
+        <h3>חיוב מדויק לפי כל עמוד</h3>
+        <p>התוכנה מחייבת לפי כל עמוד שהודפס בפועל – חד-צדדי, דו-צדדי, 2 או 4 עמודים בדף וחוברת. אפשר גם חיוב לפי זמן, ופרופילי מחיר שונים.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>חסומה הרמטית</h3>
+        <p>אין גישה לשולחן העבודה, לדפדפנים, למנהל המשימות ולהגדרות. רק התוכנות שהמנהל אישר, וההדפסה עוברת רק דרך העמדה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2M9 20a1 1 0 1 0 0-.01M18 20a1 1 0 1 0 0-.01"/></svg></div>
+        <h3>סל הדפסות משודרג</h3>
+        <p>אוספים כמה מסמכים, מסדרים את העמודים, מוסיפים עמוד שער מעוצב – ומדפיסים הכל יחד, בתשלום אחד.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+        <h3>מצב שבת וחג</h3>
+        <p>העמדה נסגרת לבד לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg></div>
+        <h3>עדכונים אוטומטיים</h3>
+        <p>גרסאות חדשות מותקנות לבד בלילה, כשהעמדה פנויה – בלי שהמנהל צריך לעשות משהו.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>שקט למנהל</h3>
+        <p>ניתוק אוטומטי למי ששכח לצאת, הגבלת זמן לכל כניסה, שעות פתיחה לפי לוח זמנים והיסטוריית שימוש מלאה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+        <h3>תמיכה מרחוק</h3>
+        <p>צריכים עזרה? אפשר להתחבר לעמדה מרחוק ולפתור, בלי להגיע פיזית – רק באישור מנהל העמדה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h12M12 6l6 6-6 6"/></svg></div>
+        <h3>מעבר קל מסייפר</h3>
+        <p>המשתמשים המקומיים והיתרות מיובאים מסייפר, כך שהמתפללים ממשיכים עם החשבונות שהכירו.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="video-sec">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>ככה זה נראה בפועל</h2>
+      <p>כניסה עם נדרים פלוס, בחירת עלון, הדפסה, סל הדפסות ועמוד שער – בדקה וחצי</p>
+      <div class="gold-line"></div>
+    </div>
+    <div class="video-box">
+      <video controls preload="metadata" playsinline poster="assets/video-poster.jpg" width="1280" height="692">
+        <source src="assets/printclick-demo.mp4" type="video/mp4">
+        הדפדפן שלך לא מציג סרטונים. <a href="assets/printclick-demo.mp4">להורדת הסרטון</a>
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>איך זה עובד</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>נכנסים</h3>
+        <p>עם נדרים פלוס או עם משתמש מקומי של בית הכנסת. אפשר להטעין יתרה כבר במסך הכניסה.</p>
+      </div>
+      <div class="step">
+        <h3>מדפיסים</h3>
+        <p>מכל תוכנה שהמנהל הגדיר – אוצר החכמה, וורד, תוכנות עלונים ועוד. בוחרים צורת הדפסה ומספר עותקים.</p>
+      </div>
+      <div class="step">
+        <h3>משלמים אוטומטית</h3>
+        <p>המחיר מוצג לפני ההדפסה, והחיוב יורד מהיתרה מדויק לפי כל עמוד שהודפס בפועל. בלי קופה ובלי חשבונות.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>צילומי מסך</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="assets/screen-login.jpg" loading="lazy" alt="מסך הכניסה לעמדה: כניסה עם נדרים פלוס או עם משתמש מקומי">
+        <figcaption><b>מסך הכניסה</b>נדרים פלוס או משתמש מקומי, עם מצב החיבור לשרת</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/screen-print.jpg" loading="lazy" alt="חלון ההדפסה: בחירת צורת הדפסה, מספר עותקים והמחיר">
+        <figcaption><b>חלון ההדפסה</b>צורת הדפסה, עותקים, והמחיר המדויק לפני האישור</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/screen-nedarim.jpg" loading="lazy" alt="כניסה עם נדרים פלוס: תעודת זהות וסיסמת האזור האישי">
+        <figcaption><b>כניסה עם נדרים פלוס</b>תעודת זהות וסיסמת האזור האישי, והטענת יתרה</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/screen-basket.jpg" loading="lazy" alt="סל ההדפסות: סידור העמודים לפני ההדפסה">
+        <figcaption><b>סל ההדפסות</b>כמה מסמכים יחד, עם סידור עמודים</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/screen-cover.jpg" loading="lazy" alt="הוספת עמוד שער עם כותרת וכותרת משנה">
+        <figcaption><b>עמוד שער</b>כותרת וכותרת משנה במסגרת מעוטרת</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/screen-session.jpg" loading="lazy" alt="העמדה בזמן שימוש עם שורת המשימות">
+        <figcaption><b>בזמן שימוש</b>היתרה, הזמן וסל ההדפסות תמיד מול העיניים</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="admins" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>למנהל העמדה</h2>
+      <p>חלון ניהול אחד, בעברית, לכל ההגדרות</p>
+      <div class="gold-line"></div>
+    </div>
+    <ul class="admin-list split">
+      <li><b>אשף התקנה פשוט</b> – מפתח רישיון, מנהל, מדפסת, וזהו.</li>
+      <li><b>מחירים גמישים</b> – לפי עמוד, דו-צדדי, לפי זמן, ופרופילים שונים למשתמשים שונים.</li>
+      <li><b>הדפסה רק דרך העמדה</b> – הדפסה ישירה למדפסת שעוקפת את החיוב נחסמת.</li>
+      <li><b>היסטוריית שימוש</b> – מי נכנס, מתי, לכמה זמן וכמה הדפיס.</li>
+      <li><b>מודעות במסך הכניסה</b> – הודעות לציבור, תרומות ועדכונים.</li>
+      <li><b>לוח זמנים</b> – העמדה פתוחה רק בשעות שקבעתם.</li>
+    </ul>
+    <div class="admin-gallery">
+      <figure>
+        <img src="assets/admin-profiles.jpg" loading="lazy" alt="עריכת פרופיל תשלום: מחיר לדף חד-צדדי ודו-צדדי, מחיר לדקה ומקסימום דקות לכניסה">
+        <figcaption><b>פרופילי תשלום</b>מחיר לדף, לדו-צדדי ולדקה, ומגבלת זמן לכל כניסה</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/admin-users.jpg" loading="lazy" alt="הוספת משתמשים, ייבוא משתמשים מסייפר ומקובץ">
+        <figcaption><b>משתמשים מקומיים</b>הוספה ידנית, ייבוא מסייפר או מקובץ</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/admin-nedarim.jpg" loading="lazy" alt="אינטגרציה עם נדרים פלוס: קוד מוסד ומשתמשי נדרים שנכנסו לעמדה">
+        <figcaption><b>נדרים פלוס</b>קוד מוסד, ורשימת המשתמשים שנכנסו לעמדה</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/admin-shabbat.jpg" loading="lazy" alt="מצב שבת וחג: מיקום, אזור זמן וזמני הדלקת נרות והבדלה">
+        <figcaption><b>מצב שבת וחג</b>לפי המיקום שלכם, עם רשימת הטווחים הקרובים</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/admin-schedule.jpg" loading="lazy" alt="הפעלה אוטומטית עם המחשב ולוח זמנים לחסימת כניסה לעמדה">
+        <figcaption><b>הפעלה אוטומטית ולוח זמנים</b>העמדה עולה עם המחשב, ונסגרת בשעות שקבעתם</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/admin-update.jpg" loading="lazy" alt="עדכון תוכנה, היסטוריית גרסאות ושליחת יומן תקלות למפתח">
+        <figcaption><b>עדכונים ותמיכה</b>עדכון בלחיצה או אוטומטי, ושליחת יומן תקלות</figcaption>
+      </figure>
+    </div>
+    <div class="btn-row-center">
+      <a class="btn btn-outline" href="assets/PrintClick-brochure.pdf" target="_blank" rel="noopener">להורדת מדריך הפונקציות המלא (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>שאלות נפוצות</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>מה צריך כדי להתקין את PrintClick?</summary>
+        <p>מחשב עם Windows 10 או Windows 11, מדפסת וחיבור לאינטרנט. ההתקנה מגדירה את העמדה בעזרת אשף פשוט.</p>
+      </details>
+      <details>
+        <summary>האם המתפללים יכולים לשלם דרך נדרים פלוס?</summary>
+        <p>כן. נכנסים לעמדה עם תעודת זהות וסיסמת האזור האישי בנדרים פלוס, והחיוב יורד מהיתרה. אפשר גם להטעין יתרה ישירות מהעמדה.</p>
+      </details>
+      <details>
+        <summary>מה קורה בשבת ובחג?</summary>
+        <p>העמדה נסגרת אוטומטית לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת.</p>
+      </details>
+      <details>
+        <summary>האם אפשר לעבור מסייפר?</summary>
+        <p>כן. אפשר לייבא את המשתמשים המקומיים מסייפר, כך שהמתפללים ממשיכים עם החשבונות שלהם.</p>
+      </details>
+      <details>
+        <summary>מאילו תוכנות אפשר להדפיס?</summary>
+        <p>מכל תוכנה שמנהל העמדה מגדיר – למשל אוצר החכמה, וורד ותוכנות עלונים.</p>
+      </details>
+      <details>
+        <summary>כמה זה עולה?</summary>
+        <p>כתבו לנו ונחזור אליכם עם הצעה שמתאימה לבית הכנסת שלכם.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="contact">
+      <h2>רוצים עמדת PrintClick בבית הכנסת?</h2>
+      <p>שלחו לנו מייל ותקבלו את חוברת התוכנה ופרטים נוספים</p>
+      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">אני רוצה פרטים</a>
+      <a class="mail" href="mailto:s31001521@gmail.com">s31001521@gmail.com</a>
+      <a class="mail" style="margin-top:8px;font-weight:500;color:#c9d0dd" href="assets/PrintClick-brochure.pdf" target="_blank" rel="noopener">או הורידו עכשיו את מדריך הפונקציות (PDF)</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">PrintClick (פרינט קליק) – עמדת הדפסה לבתי מדרש ובתי כנסת</div>
+</footer>
+
+</body>
+</html>
