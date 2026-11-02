@@ -183,6 +183,22 @@
     section { padding: 52px 0; }
     .hero { padding-top: 36px; }
   }
+  /* ===== חלון יצירת קשר ===== */
+  dialog#contactDialog { margin: auto; border: none; border-radius: 18px; padding: 0; width: min(440px, calc(100vw - 32px)); box-shadow: 0 30px 80px rgba(0,0,0,.35); color: var(--text); }
+  dialog#contactDialog::backdrop { background: rgba(20,26,40,.55); }
+  .cd-head { background: var(--navy); color: #fff; padding: 20px 24px; position: relative; }
+  .cd-head h3 { font-size: 21px; margin: 0; }
+  .cd-head p { color: #c9d0dd; font-size: 14.5px; margin-top: 4px; }
+  .cd-close { position: absolute; top: 12px; left: 14px; background: none; border: none; color: #c9d0dd; font-size: 26px; cursor: pointer; line-height: 1; }
+  .cd-body { padding: 20px 24px 24px; display: grid; gap: 10px; }
+  .cd-opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: right; font: inherit; font-weight: 700; font-size: 16px; color: var(--navy); background: #f6f4ee; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; text-decoration: none; }
+  .cd-opt:hover { border-color: var(--gold); background: #fffaf0; }
+  .cd-opt small { display: block; font-weight: 400; color: var(--muted); font-size: 13.5px; }
+  .cd-ic { width: 36px; height: 36px; flex: none; border-radius: 10px; display: grid; place-items: center; background: var(--navy); }
+  .cd-ic svg { width: 19px; height: 19px; stroke: #e9c46a; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .cd-addr { text-align: center; margin-top: 6px; color: var(--muted); font-size: 14px; }
+  .cd-addr b { direction: ltr; unicode-bidi: isolate; color: var(--navy); user-select: all; }
+  .cd-done { text-align: center; color: var(--teal); font-weight: 700; min-height: 1.4em; }
 </style>
 </head>
 <body>
@@ -200,7 +216,7 @@
       <a href="#demo">סרטון</a>
       <a href="#screens">צילומי מסך</a>
       <a href="#faq">שאלות</a>
-      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">לפרטים</a>
+      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94" data-contact>לפרטים</a>
     </nav>
   </div>
 </header>
@@ -214,7 +230,7 @@
       <h1><span class="en">Print<span>Click</span></span> – עמדת מחשב חסומה ועמדת הדפסות לבית המדרש</h1>
       <p class="lead">PrintClick נועלת את הגישה למחשב והופכת אותו לעמדה ציבורית בטוחה: המתפללים נכנסים עם נדרים פלוס או עם משתמש של בית הכנסת, לומדים באוצר החכמה, מדפיסים מוורד או מתוכנות העלונים – והחיוב מתבצע לבד, מדויק לפי כל עמוד שהודפס בפועל. ולמנהל יש שקט.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">אני רוצה פרטים</a>
+        <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94" data-contact>אני רוצה פרטים</a>
         <a class="btn btn-outline" href="#demo">לצפייה בסרטון</a>
       </div>
     </div>
@@ -499,8 +515,8 @@
     <div class="contact">
       <h2>רוצים עמדת PrintClick בבית הכנסת?</h2>
       <p>שלחו לנו מייל ותקבלו את חוברת התוכנה ופרטים נוספים</p>
-      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">אני רוצה פרטים</a>
-      <a class="mail" href="mailto:s31001521@gmail.com">s31001521@gmail.com</a>
+      <a class="btn btn-gold" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94" data-contact>אני רוצה פרטים</a>
+      <a class="mail" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94" data-contact>s31001521@gmail.com</a>
       <a class="mail" style="margin-top:8px;font-weight:500;color:#c9d0dd" href="assets/PrintClick-brochure.pdf" target="_blank" rel="noopener">או הורידו עכשיו את מדריך הפונקציות (PDF)</a>
     </div>
   </div>
@@ -511,6 +527,63 @@
 <footer>
   <div class="wrap">PrintClick (פרינט קליק) – עמדת מחשב חסומה ועמדת הדפסות לבתי מדרש ובתי כנסת · אוצר החכמה · נדרים פלוס</div>
 </footer>
+
+<dialog id="contactDialog" aria-labelledby="cdTitle">
+  <div class="cd-head">
+    <button class="cd-close" type="button" aria-label="סגירה" data-close>&times;</button>
+    <h3 id="cdTitle">אני רוצה פרטים על PrintClick</h3>
+    <p>שלחו לנו מייל, ותקבלו מיד בחזרה את מדריך הפונקציות</p>
+  </div>
+  <div class="cd-body">
+    <a class="cd-opt" id="cdGmail" target="_blank" rel="noopener"
+       href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=s31001521@gmail.com&amp;su=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">
+      <span class="cd-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span>שליחה דרך Gmail<small>נפתח בדפדפן, עם הכותרת כבר מוכנה</small></span>
+    </a>
+    <a class="cd-opt" id="cdMailApp" href="mailto:s31001521@gmail.com?subject=%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%AA%D7%95%D7%9B%D7%A0%D7%94">
+      <span class="cd-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.5z"/><path d="M8 9h8M8 12h5"/></svg></span>
+      <span>שליחה מתוכנת המייל במחשב<small>Outlook, דואר של Windows וכדומה</small></span>
+    </a>
+    <button class="cd-opt" type="button" id="cdCopy">
+      <span class="cd-ic"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span>
+      <span>העתקת כתובת המייל<small>ושליחה מכל תוכנת מייל, עם הכותרת "אני רוצה פרטים על התוכנה"</small></span>
+    </button>
+    <div class="cd-done" id="cdDone" aria-live="polite"></div>
+    <div class="cd-addr">כתובת המייל: <b>s31001521@gmail.com</b></div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('contactDialog');
+  if (!dlg || typeof dlg.showModal !== 'function') return;   // דפדפן ישן - הקישור הרגיל (mailto) נשאר
+  var done = document.getElementById('cdDone');
+  var ADDR = 's31001521@gmail.com';
+
+  document.querySelectorAll('[data-contact]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      done.textContent = '';
+      dlg.showModal();
+    });
+  });
+
+  dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });   // לחיצה מחוץ לחלון
+
+  document.getElementById('cdCopy').addEventListener('click', function () {
+    function ok() { done.textContent = '✓ הכתובת הועתקה'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ADDR).then(ok, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var t = document.createElement('textarea'); t.value = ADDR; document.body.appendChild(t);
+      t.select(); try { document.execCommand('copy'); ok(); } catch (x) { done.textContent = 'העתיקו ידנית: ' + ADDR; }
+      document.body.removeChild(t);
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
