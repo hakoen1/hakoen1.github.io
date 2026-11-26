@@ -46,13 +46,15 @@
     {"@type": "Question", "name": "האם המתפללים יכולים לשלם דרך נדרים פלוס?",
      "acceptedAnswer": {"@type": "Answer", "text": "כן. נכנסים לעמדה עם תעודת זהות וסיסמת האזור האישי בנדרים פלוס, והחיוב יורד מהיתרה. אפשר גם להטעין יתרה ישירות מהעמדה."}},
     {"@type": "Question", "name": "מה קורה בשבת ובחג?",
-     "acceptedAnswer": {"@type": "Answer", "text": "העמדה נסגרת אוטומטית לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "העמדה נסגרת אוטומטית לפי זמני השבת והחג במיקום של בית הכנסת, ומציגה מסך מעוצב לשבת ולכל חג. אפשר גם לבחור שהמחשב ייכנס לשינה ויתעורר לבד במוצאי שבת, או ייכבה לגמרי."}},
     {"@type": "Question", "name": "האם אפשר להשתמש בעמדה לאוצר החכמה?",
      "acceptedAnswer": {"@type": "Answer", "text": "כן. PrintClick הופכת את המחשב לעמדת מחשב חסומה: המשתמשים פותחים רק את אוצר החכמה ואת התוכנות שהמנהל אישר, ואפשר לחייב לפי זמן שימוש או לפי הדפסות."}},
     {"@type": "Question", "name": "איך PrintClick נועלת את הגישה למחשב?",
      "acceptedAnswer": {"@type": "Answer", "text": "אין גישה לשולחן העבודה, לסייר הקבצים, לדפדפנים, למנהל המשימות ולהגדרות. מקש Windows וקיצורי המקלדת חסומים, וחלונות פתיחה ושמירה של קבצים נסגרים אוטומטית."}},
     {"@type": "Question", "name": "האם אפשר לגלוש באינטרנט מהעמדה?",
      "acceptedAnswer": {"@type": "Answer", "text": "לא. הדפדפנים חסומים, והמשתמשים יכולים לפתוח רק את התוכנות שמנהל העמדה אישר."}},
+    {"@type": "Question", "name": "יש לנו כמה עמדות. אפשר חשבון אחד לכולן?",
+     "acceptedAnswer": {"@type": "Answer", "text": "כן. מגדירים תיקייה משותפת ברשת (העמדה יוצרת אותה בלחיצה), והמשתמשים המקומיים והיתרות מסתנכרנים בין כל העמדות. משתמשי נדרים פלוס ממילא נכנסים בכל עמדה."}},
     {"@type": "Question", "name": "האם אפשר לעבור מסייפר?",
      "acceptedAnswer": {"@type": "Answer", "text": "כן. אפשר לייבא את המשתמשים המקומיים מסייפר, כך שהמתפללים ממשיכים עם החשבונות שלהם."}}
   ]
@@ -159,6 +161,13 @@
   .admin-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; max-width: 980px; margin: 0 auto; list-style: none; }
   .btn-row-center { text-align: center; margin-top: 30px; }
 
+  .new-sec { background: linear-gradient(180deg, #fff 0%, var(--bg) 100%); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .new-badge { display: inline-block; background: var(--teal); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; margin-bottom: 10px; }
+  .shabbat-show { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 26px; margin-bottom: 26px; }
+  .shabbat-show img { border-radius: 12px; box-shadow: 0 14px 34px rgba(31,42,68,.16); }
+  .shabbat-show h3 { font-size: 24px; color: var(--navy); margin-bottom: 10px; }
+  .shabbat-show p { color: var(--muted); margin-bottom: 10px; }
+  @media (max-width: 900px) { .shabbat-show { grid-template-columns: 1fr; } }
   .faq { max-width: 820px; margin: 0 auto; }
   details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
   summary { cursor: pointer; font-weight: 700; color: var(--navy); font-size: 17px; }
@@ -212,6 +221,7 @@
     <nav>
       <a href="#locked">עמדה חסומה</a>
       <a href="#features">יכולות</a>
+      <a href="#new">מה חדש</a>
       <a href="#admins">למנהל</a>
       <a href="#demo">סרטון</a>
       <a href="#screens">צילומי מסך</a>
@@ -311,12 +321,12 @@
       <div class="feature">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2M9 20a1 1 0 1 0 0-.01M18 20a1 1 0 1 0 0-.01"/></svg></div>
         <h3>סל הדפסות משודרג</h3>
-        <p>אוספים כמה מסמכים, מסדרים את העמודים, מוסיפים עמוד שער מעוצב – ומדפיסים הכל יחד, בתשלום אחד.</p>
+        <p>אוספים כמה מסמכים, מסדרים את העמודים, מוסיפים עמוד שער מעוצב ומספרי עמודים – ומדפיסים הכל יחד, בתשלום אחד. או שומרים לדיסק און קי.</p>
       </div>
       <div class="feature">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
         <h3>מצב שבת וחג</h3>
-        <p>העמדה נסגרת לבד לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת.</p>
+        <p>העמדה נסגרת לבד לפי זמני השבת והחג במיקום של בית הכנסת, עם מסך מעוצב לכל חג – או נכנסת לשינה ומתעוררת לבד במוצאי שבת.</p>
       </div>
       <div class="feature">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg></div>
@@ -337,6 +347,73 @@
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h12M12 6l6 6-6 6"/></svg></div>
         <h3>מעבר קל מסייפר</h3>
         <p>המשתמשים המקומיים והיתרות מיובאים מסייפר, כך שהמתפללים ממשיכים עם החשבונות שהכירו.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="new" class="new-sec">
+  <div class="wrap">
+    <div class="sec-title">
+      <h2>חדש ב-PrintClick</h2>
+      <p>מה נוסף לעמדה בגרסאות האחרונות – וכל עמדה מקבלת את זה לבד, בעדכון הלילי</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="shabbat-show">
+      <img src="assets/shabbat-designs.jpg" width="1608" height="908" loading="lazy" alt="מסכי שבת וחג מעוצבים של PrintClick: שבת שלום, פסח, סוכות ושבועות">
+      <div>
+        <h3>מסך שבת וחג – מעוצב לכל יום</h3>
+        <p>בשבת העמדה מציגה "שבת שלום", ובפסח, שבועות, סוכות, שמחת תורה, ראש השנה ויום כיפור – עיצוב מיוחד לכל חג. אפשר גם להציג תמונה משלכם.</p>
+        <p>ובמקום מסך דולק כל השבת – אפשר לבחור שהמחשב ייכנס לשינה ויתעורר לבד במוצאי שבת, או ייכבה לגמרי. בזמן השבת המקלדת והעכבר נעולים, כדי שלא ילחצו עליהם בטעות.</p>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="8" height="6" rx="1"/><rect x="14" y="4" width="8" height="6" rx="1"/><rect x="8" y="15" width="8" height="6" rx="1"/><path d="M6 10v2h12v-2M12 12v3"/></svg></div>
+        <h3>כמה עמדות – חשבון אחד</h3>
+        <p>יש כמה עמדות בבית המדרש? המשתמשים והיתרות מסתנכרנים ביניהן דרך הרשת. נכנסים בכל עמדה עם אותו חשבון, והחיובים מכל העמדות מתחברים נכון. נפלה הרשת? כל עמדה ממשיכה לעבוד ומסתנכרנת כשהרשת חוזרת.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg></div>
+        <h3>חלון הדפסה חדש</h3>
+        <p>ארבעה כפתורים גדולים עם ציור של הדף – עמוד אחד, 2 עמודים, 4 עמודים וחוברת. ומתגים להדפסה דו-צדדית, מספרי עמודים, ו"הדפסה חדה לטקסט" שמוציאה ניקוד ואותיות קטנות חדים.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="9" rx="1"/><path d="M5 11h14v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/></svg></div>
+        <h3>שמירה לדיסק און קי</h3>
+        <p>שמירת המסמכים לכונן נייד ישר מחלון ההדפסה או מהסל, עם התקדמות השמירה. אפשר לתת למשתמש לבחור את הכונן – מוצגים רק כוננים שחוברו ב-USB – ותזכורת להוציא אותו ביציאה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div>
+        <h3>אישור הדפסה אוטומטי</h3>
+        <p>באוצר החכמה ובתוכנות שפותחות חלון הדפסה של Windows – העמדה לוחצת "הדפס" לבד, והמשתמש עובר ישר לחלון ההדפסה של PrintClick.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>פתיחה בלי כניסה</h3>
+        <p>אפשר לסמן תוכנה (למשל תוכנת שיעורים) שתיפתח ישר ממסך הכניסה, בלי חשבון ובלי חיוב. הדפסה ממנה עדיין דורשת כניסה, והיא נסגרת לבד כשאין שימוש.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
+        <h3>מראה בהיר או כהה</h3>
+        <p>ערכת צבעים לבחירה לכל המסכים של המשתמש – כהה ויוקרתי, או בהיר ונקי בגווני שמנת וזהב.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+        <h3>הודעות מהתמיכה</h3>
+        <p>יומן תקלה שנשלח מהעמדה מקבל תשובה – והיא מופיעה בחלון הניהול, בעמוד "הודעות מהתמיכה", עם סימון כשיש הודעה חדשה.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div>
+        <h3>עמדה שלא נתקעת</h3>
+        <p>אם התוכנה נתקעת, השומר מזהה את זה תוך כ-3 דקות ומעלה אותה מחדש לבד – בלי שמישהו יצטרך להפעיל את המחשב מחדש.</p>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></div>
+        <h3>חלון ניהול מחודש</h3>
+        <p>תפריט צד מסודר לפי נושאים, חיפוש הגדרות, טבלת משתמשים עם חיפוש ומיון, סיסמאות מוסתרות ומחיקה של כמה משתמשים יחד.</p>
       </div>
     </div>
   </div>
@@ -480,7 +557,11 @@
       </details>
       <details>
         <summary>מה קורה בשבת ובחג?</summary>
-        <p>העמדה נסגרת אוטומטית לפי זמני כניסת ויציאת השבת והחג במיקום של בית הכנסת, ונפתחת שוב במוצאי שבת.</p>
+        <p>העמדה נסגרת אוטומטית לפי זמני השבת והחג במיקום של בית הכנסת, ומציגה מסך מעוצב לשבת ולכל חג. אפשר גם לבחור שהמחשב ייכנס לשינה ויתעורר לבד במוצאי שבת, או ייכבה לגמרי.</p>
+      </details>
+      <details>
+        <summary>יש לנו כמה עמדות. אפשר חשבון אחד לכולן?</summary>
+        <p>כן. מגדירים תיקייה משותפת ברשת (העמדה יוצרת אותה בלחיצה), והמשתמשים המקומיים והיתרות מסתנכרנים בין כל העמדות. משתמשי נדרים פלוס ממילא נכנסים בכל עמדה.</p>
       </details>
       <details>
         <summary>האם אפשר לעבור מסייפר?</summary>
